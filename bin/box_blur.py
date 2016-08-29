@@ -22,13 +22,15 @@ def _main_box_blur(img_path, radius=DEFAULT_RADIUS, output_path=None):
         image.save(output_path, output)
 
 def _parse_args(args=sys.argv):
-    parser = argparse.ArgumentParser()
-    parser.add_argument('img_path')
-    parser.add_argument('--output', '-o',
-                        dest='output_path', default=None)
+    parser = argparse.ArgumentParser(
+        description='Apply box blur to an image.')
+    parser.add_argument('img_path', help='source image file path')
+    parser.add_argument('--output', '-o', dest='output_path', default=None,
+                        help='save new image to a file')
     parser.add_argument('--radius', '-r',
                         type=cmd_line.parse_non_negative_integer,
-                        default=DEFAULT_RADIUS)
+                        default=DEFAULT_RADIUS,
+                        help='specify convolution kernel radius')
     return parser.parse_args(args[1:])
 
 def _main(args=sys.argv):

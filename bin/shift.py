@@ -32,17 +32,18 @@ def _parse_direction(s):
         raise argparse.ArgumentTypeError('invalid direction: ' + s)
 
 def _parse_args(args=sys.argv):
-    parser = argparse.ArgumentParser()
-    parser.add_argument('img_path')
-    parser.add_argument('--output', '-o',
-                        dest='output_path', default=None)
-    parser.add_argument('--direction', '-d',
-                        type=_parse_direction,
-                        choices=Direction,
-                        default=DEFAULT_DIRECTION)
+    parser = argparse.ArgumentParser(
+        description='Shift an image by a few pixels in a specified direction.')
+    parser.add_argument('img_path', help='source image file path')
+    parser.add_argument('--output', '-o', dest='output_path', default=None,
+                        help='save new image to a file')
+    parser.add_argument('--direction', '-d', choices=Direction,
+                        type=_parse_direction, default=DEFAULT_DIRECTION,
+                        help='specify shifting direction')
     parser.add_argument('--distance', '-n',
                         type=cmd_line.parse_non_negative_integer,
-                        default=DEFAULT_DISTANCE)
+                        default=DEFAULT_DISTANCE,
+                        help='specify shift size (in pixels)')
     return parser.parse_args(args[1:])
 
 def _main(args=sys.argv):

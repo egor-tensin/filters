@@ -7,26 +7,58 @@ matrices.
 Prerequisites
 -------------
 
-Python 3.4 or higher is required.
-Additionally, [OpenCV]'s Python bindings are used for image manipulation.
-Please note that [NumPy] is also required as a transitive dependency.
+* Python 3.4 or higher
+* [numpy]
+* [opencv-python]
+
 The versions below have been verified to work properly.
 
 | Software      | Version |
 | ------------- | ------- |
-| Python        | 3.5.1   |
+| CPython       | 3.5.1   |
 | numpy         | 1.11.0  |
 | opencv-python | 3.1.0   |
 
-[NumPy]: http://www.numpy.org/
-[OpenCV]: http://opencv.org/
+[numpy]: http://www.numpy.org/
+[opencv-python]: http://opencv.org/
 
-Windows binaries of the required packages for CPython can be acquired at the
-usual place: http://www.lfd.uci.edu/~gohlke/pythonlibs/.
-Please note that OpenCV's Python bindings require [Visual C++ Redistributable
-for Visual Studio 2015] to be installed on Windows.
+Windows binaries for CPython can be acquired at
+http://www.lfd.uci.edu/~gohlke/pythonlibs/.
+
+OpenCV's Python bindings require [Visual C++ Redistributable for Visual Studio
+2015] on Windows.
 
 [Visual C++ Redistributable for Visual Studio 2015]: https://www.microsoft.com/en-us/download/details.aspx?id=48145
+
+Usage
+-----
+
+Run the scripts from the top-level directory using `python -m`.
+Pass the `--help` flag to a script to examine its detailed usage information.
+
+For example (using Windows path format):
+
+    > python -m bin.box_blur img\Lenna.png --radius 3
+
+The complete list of usable scripts is given below.
+
+* box_blur.py &mdash; Apply box blur to an image.
+* gaussian_blur.py &mdash; Apply Gaussian blur to an image.
+* shift.py &mdash; Shift an image by a few pixels in a specified direction.
+
+Linting
+-------
+
+Requires [PyLint].
+Run from the top-level directory:
+
+    > pylint filters
+    ...
+
+    > pylint bin
+    ...
+
+[PyLint]: https://www.pylint.org/
 
 License
 -------
