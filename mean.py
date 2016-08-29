@@ -25,7 +25,7 @@ def convolve(img, kernel):
 
 DEFAULT_RADIUS = 1
 
-def do(img_path, radius=DEFAULT_RADIUS, output_path=None):
+def mean(img_path, radius=DEFAULT_RADIUS, output_path=None):
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
     kernel = gen_kernel(radius)
     output = convolve(img, kernel)
@@ -55,7 +55,7 @@ def _parse_args(args=sys.argv):
     return parser.parse_args(args[1:])
 
 def main(args=sys.argv):
-    do(**vars(_parse_args(args)))
+    mean(**vars(_parse_args(args)))
 
 if __name__ == '__main__':
     main()
