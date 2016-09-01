@@ -19,26 +19,18 @@ class Direction(Enum):
 
     def gen_kernel(self, distance):
         radius = distance
+        r = radius
         size = 2 * radius + 1
         kernel = np.zeros((size, size))
-        x, y = radius, radius
 
-        if self is Direction.NORTH:
-            x = -1
-        elif self is Direction.NORTH_EAST:
-            x, y = -1, 0
-        elif self is Direction.EAST:
-            y = 0
-        elif self is Direction.SOUTH_EAST:
-            x, y = 0, 0
-        elif self is Direction.SOUTH:
-            x = 0
-        elif self is Direction.SOUTH_WEST:
-            x, y = 0, -1
-        elif self is Direction.WEST:
-            y = -1
-        elif self is Direction.NORTH_WEST:
-            x, y = -1, -1
+        if   self is Direction.NORTH:      x, y = -1,  r
+        elif self is Direction.NORTH_EAST: x, y = -1,  0
+        elif self is Direction.EAST:       x, y =  r,  0
+        elif self is Direction.SOUTH_EAST: x, y =  0,  0
+        elif self is Direction.SOUTH:      x, y =  0,  r
+        elif self is Direction.SOUTH_WEST: x, y =  0, -1
+        elif self is Direction.WEST:       x, y =  r, -1
+        elif self is Direction.NORTH_WEST: x, y = -1, -1
         else:
             raise NotImplementedError('unsupported direction: ' + str(self))
 
