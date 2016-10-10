@@ -36,7 +36,7 @@ Usage
 Run the scripts from the top-level directory using `python -m`.
 Pass the `--help` flag to a script to examine its detailed usage information.
 
-For example (using Windows path format):
+For example (using Windows-style paths):
 
     > python -m bin.box_blur img\Lenna.png --radius 3
 
@@ -52,9 +52,7 @@ Development
 ### Linting
 
 Requires [PyLint].
-
-    > cd
-    D:\workspace\personal\filters
+To lint everything, run from the top-level directory:
 
     > pylint filters
     ...
