@@ -13,11 +13,11 @@ Prerequisites
 
 The versions below have been verified to work properly.
 
-| Software      | Version |
-| ------------- | ------- |
-| CPython       | 3.5.1   |
-| numpy         | 1.11.0  |
-| opencv-python | 3.1.0   |
+Software      | Version
+------------- | -------
+CPython       | 3.5.1
+numpy         | 1.11.0
+opencv-python | 3.1.0
 
 [numpy]: http://www.numpy.org/
 [opencv-python]: http://opencv.org/
@@ -46,11 +46,15 @@ The complete list of usable scripts is given below.
 * gaussian_blur.py &mdash; Apply Gaussian blur to an image.
 * shift.py &mdash; Shift an image by a few pixels in a specified direction.
 
-Linting
--------
+Development
+-----------
+
+### Linting
 
 Requires [PyLint].
-Run from the top-level directory:
+
+    > cd
+    D:\workspace\personal\filters
 
     > pylint filters
     ...

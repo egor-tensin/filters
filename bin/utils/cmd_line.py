@@ -5,11 +5,11 @@
 
 import argparse
 
-def parse_non_negative_integer(s):
+def parse_non_negative_integer(src):
     try:
-        x = int(s)
+        n = int(src)
     except ValueError:
-        raise argparse.ArgumentTypeError('must be a non-negative integer: ' + s)
-    if x < 0:
-        raise argparse.ArgumentTypeError('must be a non-negative integer: ' + s)
-    return x
+        raise argparse.ArgumentTypeError('must be a non-negative integer: ' + src)
+    if n < 0:
+        raise argparse.ArgumentTypeError('must be a non-negative integer: ' + src)
+    return n
