@@ -25,11 +25,11 @@ def _main_shift(
     else:
         image.save(output_path, output)
 
-def _parse_direction(src):
+def _parse_direction(s):
     try:
-        return Direction(src)
+        return Direction(s)
     except ValueError:
-        raise argparse.ArgumentTypeError('invalid direction: ' + src)
+        raise argparse.ArgumentTypeError('invalid direction: ' + s)
 
 def _parse_args(args=sys.argv):
     parser = argparse.ArgumentParser(
