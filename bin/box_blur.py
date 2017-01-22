@@ -6,13 +6,14 @@
 import argparse
 import sys
 
-from .utils import cmd_line, image
 from filters.convolution import convolve
 from filters.kernel.box_blur import gen_kernel
 
+from .utils import cmd_line, image
+
 DEFAULT_RADIUS = 1
 
-def _main_box_blur(img_path, radius=DEFAULT_RADIUS, output_path=None):
+def do_box_blur(img_path, radius=DEFAULT_RADIUS, output_path=None):
     img = image.load_grayscale(img_path)
     kernel = gen_kernel(radius)
     output = convolve(img, kernel)
@@ -21,7 +22,9 @@ def _main_box_blur(img_path, radius=DEFAULT_RADIUS, output_path=None):
     else:
         image.save(output_path, output)
 
-def _parse_args(args=sys.argv):
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
     parser = argparse.ArgumentParser(
         description='Apply box blur to an image.')
     parser.add_argument('img_path', help='source image file path')
@@ -31,10 +34,10 @@ def _parse_args(args=sys.argv):
                         type=cmd_line.parse_non_negative_integer,
                         default=DEFAULT_RADIUS,
                         help='specify convolution kernel radius')
-    return parser.parse_args(args[1:])
+    return parser.parse_args(args)
 
-def _main(args=sys.argv):
-    _main_box_blur(**vars(_parse_args(args)))
+def main(args=None):
+    do_box_blur(**vars(_parse_args(args)))
 
 if __name__ == '__main__':
-    _main()
+    main()

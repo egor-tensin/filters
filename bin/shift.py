@@ -6,14 +6,15 @@
 import argparse
 import sys
 
-from .utils import cmd_line, image
 from filters.convolution import convolve
 from filters.kernel.shift import Direction
+
+from .utils import cmd_line, image
 
 DEFAULT_DIRECTION = Direction.SOUTH_EAST
 DEFAULT_DISTANCE = 1
 
-def _main_shift(
+def do_shift(
         img_path, direction=DEFAULT_DIRECTION, distance=DEFAULT_DISTANCE,
         output_path=None):
 
@@ -31,7 +32,9 @@ def _parse_direction(s):
     except ValueError:
         raise argparse.ArgumentTypeError('invalid direction: ' + s)
 
-def _parse_args(args=sys.argv):
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
     parser = argparse.ArgumentParser(
         description='Shift an image by a few pixels in a specified direction.')
     parser.add_argument('img_path', help='source image file path')
@@ -44,10 +47,10 @@ def _parse_args(args=sys.argv):
                         type=cmd_line.parse_non_negative_integer,
                         default=DEFAULT_DISTANCE,
                         help='specify shift size (in pixels)')
-    return parser.parse_args(args[1:])
+    return parser.parse_args(args)
 
-def _main(args=sys.argv):
-    _main_shift(**vars(_parse_args(args)))
+def main(args=None):
+    do_shift(**vars(_parse_args(args)))
 
 if __name__ == '__main__':
-    _main()
+    main()
