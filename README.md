@@ -13,11 +13,11 @@ Prerequisites
 
 The versions below have been verified to work properly.
 
-Software      | Version
-------------- | -------
-CPython       | 3.5.1
-numpy         | 1.11.0
-opencv-python | 3.1.0
+| Software      | Version
+| ------------- | -------
+| CPython       | 3.5.1
+| numpy         | 1.11.0
+| opencv-python | 3.1.0
 
 [numpy]: http://www.numpy.org/
 [opencv-python]: http://opencv.org/
